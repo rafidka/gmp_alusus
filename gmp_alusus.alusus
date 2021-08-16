@@ -1,0 +1,17 @@
+import "alusus_spp";
+import "libgmp.so";
+
+module Gmp {
+    type mpz_t
+    {
+    def _mp_alloc: Int;
+    def _mp_size: Int;
+    def _mp_d: ptr;
+    }
+
+    @expname[__gmpz_init_set_str] func mpz_init_set_str(ref[mpz_t], ptr[Char], int): Int;
+    @expname[__gmpz_init] func mpz_init(ref[mpz_t]);
+    @expname[__gmpz_mul] func mpz_mul(ref[mpz_t], ref[mpz_t], ref[mpz_t]);
+    @expname[__gmp_printf] func gmp_printf(ptr[Char], ...any): Int;
+    @expname[__gmpz_clear] func mpz_clear(ref[mpz_t]);
+}

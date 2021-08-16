@@ -1,0 +1,31 @@
+import "Srl/Console";
+import "Apm"
+
+Apm.importFile("rafidka/gmp_alusus")
+
+func main() {
+    use Gmp;
+
+    def x: mpz_t;
+    def y: mpz_t;
+    def result: mpz_t;
+
+    mpz_init_set_str(x, "7612058254738945", 10);
+    mpz_init_set_str(y, "9263591128439081", 10);
+    mpz_init(result);
+
+    mpz_mul(result, x, y);
+    gmp_printf("    %Zd\n"
+                "*\n"
+                "    %Zd\n"
+                "--------------------\n"
+                "%Zd\n", x~ptr, y~ptr, result~ptr);
+
+    /* free used memory */
+    mpz_clear(x);
+    mpz_clear(y);
+    mpz_clear(result);
+
+}
+
+main();
